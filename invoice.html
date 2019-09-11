@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Invoice</title>
+	<link rel="stylesheet" type="text/css" href="invoice.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="invoice.js"></script>
+</head>
+<body>
+<fieldset class="boxfieldset">
+		<legend style="text-align: center;font-size: 40px;color: #005662;background-color: #d3d3d3;font-weight: bold;">TS INDUSTRIES INVOICE</legend>
+		<form name="myForm" method="post">
+		<div style="text-align: center;">
+			<fieldset class="card myfieldset" style="display:inline;max-width: 200px">
+			  <legend style="text-align: center;">INVOICE DETAILS</legend>
+			  INVOICE NUMBER: <br><input type="number" name="invn"><br><br>
+			  INVOICE DATE: <br><input type="date" name="invd"><br><br>
+			  Transport Details: <br><input type="text" name="trans"><br><br>
+			  Vehicle Number: <br><input type="text" name="vehnum"><br><br>
+			</fieldset>
+			<fieldset class="card myfieldset" style="display:inline;max-width: 200px">
+			  <legend style="text-align: center;">CONSIGNEE DETAILS</legend>
+			  Details of Consignee/Billed to:<br><textarea name="billto" rows="12" cols="60"></textarea><br>
+			</fieldset>
+		  <fieldset class="card myfieldset" style="max-width: 300px;display:inline;">
+				<legend>ADDITIONAL VALUES</legend>
+				<input type="checkbox" name="igstq"> APPLY IGST(12%)<br><br>
+				<input type="checkbox" name="sgstq"> APPLY SGST(6%)<br><br>
+				<input type="checkbox" name="cgstq"> APPLY CGST(6%)<br><br>
+				CARRIAGE OUTWARD: <br><input type="number" step="0.01" name="carrout" value="0"><br>
+				Transport/packing/other charges: <br><input type="number" step="0.01" name="otherchg" value="0"><br>
+				LESS ADVANCE: <br><input type="number" step="1" name="lessadv" value="0"><br>
+			</fieldset>
+		</div>
+		</form>
+		<fieldset class="card myfieldset" style="margin: 15px auto;text-align: center;max-width: 200px">
+	  	<legend>ITEM BUTTONS</legend>
+			<div id="itembuttons" style="text-align: center;padding-bottom: 20px">
+		    <button style="background-color:#F1C40F;padding: 10px;" onclick="addItem()"><span>ADD NEW ITEM</span></button>
+		  </div>
+	  </fieldset>
+		<form name="myForm2" method="post">
+			<div id="items"
+	    style="
+	    display: flex;
+	    flex-wrap: wrap;
+	    max-width: 800px;
+	    margin: 0 auto;
+	    text-align: center;">
+			</div>
+		</form>
+		<div style="text-align: center;padding-bottom: 20px">
+			<button style="background-color:#c7ea46;padding: 10px;" onclick="validateFormUtil()"><span>CHECK AMOUNT</span></button>
+			<button style="background-color:#0b6623;padding: 10px;" onclick="validateForm(true)"><span style="font-size: 20px;color: white">PRINT INVOICE</span></button>
+	  </div>
+	</fieldset>
+</body>
+</html>
